@@ -1,0 +1,441 @@
+package com.htc.vita.core.json;
+
+import com.htc.vita.mod.desktop.JavaJsonFactory;
+import org.junit.Assert;
+import org.junit.Test;
+
+public class JavaJsonFactoryTest {
+    @Test
+    public void java_0_getInstance() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        Assert.assertTrue(jsonFactory instanceof JavaJsonFactory);
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        Assert.assertTrue(jsonFactory instanceof JavaJsonFactory);
+    }
+
+    @Test
+    public void java_1_createJsonArray() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals("[]", jsonArray.toString());
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals("[]", jsonArray.toString());
+    }
+
+    @Test
+    public void java_2_createJsonObject() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonObject jsonObject = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonObject);
+        Assert.assertEquals("{}", jsonObject.toString());
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonObject = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonObject);
+        Assert.assertEquals("{}", jsonObject.toString());
+    }
+
+    @Test
+    public void java_3_getJsonArray() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.getJsonArray("[]");
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals("[]", jsonArray.toString());
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.getJsonArray("[]");
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals("[]", jsonArray.toString());
+    }
+
+    @Test
+    public void java_4_getJsonObject() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonObject jsonObject = jsonFactory.getJsonObject("{}");
+        Assert.assertNotNull(jsonObject);
+        Assert.assertEquals("{}", jsonObject.toString());
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonObject = jsonFactory.getJsonObject("{}");
+        Assert.assertNotNull(jsonObject);
+        Assert.assertEquals("{}", jsonObject.toString());
+    }
+
+    @Test
+    public void jsonArray_00_size() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0, jsonArray.size());
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0, jsonArray.size());
+    }
+
+    @Test
+    public void jsonArray_01_parseBoolean() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(false, jsonArray.parseBoolean(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(false, jsonArray.parseBoolean(0));
+    }
+
+    @Test
+    public void jsonArray_01_parseBoolean_withDefault() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(true, jsonArray.parseBoolean(0, true));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(true, jsonArray.parseBoolean(0, true));
+    }
+
+    @Test
+    public void jsonArray_02_parseDouble() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0.0D, jsonArray.parseDouble(0), 0.00001D);
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0.0D, jsonArray.parseDouble(0), 0.00001D);
+    }
+
+    @Test
+    public void jsonArray_02_parseDouble_withDefault() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1.0D, jsonArray.parseDouble(0, 1.0D), 0.00001D);
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1.0D, jsonArray.parseDouble(0, 1.0D), 0.00001D);
+    }
+
+    @Test
+    public void jsonArray_03_parseFloat() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0.0f, jsonArray.parseFloat(0), 0.00001f);
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0.0f, jsonArray.parseFloat(0), 0.00001f);
+    }
+
+    @Test
+    public void jsonArray_03_parseFloat_withDefault() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1.0f, jsonArray.parseFloat(0, 1.0f), 0.00001f);
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1.0f, jsonArray.parseFloat(0, 1.0f), 0.00001f);
+    }
+
+    @Test
+    public void jsonArray_04_parseInt() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0, jsonArray.parseInt(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0, jsonArray.parseInt(0));
+    }
+
+    @Test
+    public void jsonArray_04_parseInt_withDefault() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1, jsonArray.parseInt(0, 1));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1, jsonArray.parseInt(0, 1));
+    }
+
+    @Test
+    public void jsonArray_05_parseLong() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0L, jsonArray.parseLong(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(0L, jsonArray.parseLong(0));
+    }
+
+    @Test
+    public void jsonArray_05_parseLong_withDefault() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1L, jsonArray.parseLong(0, 1L));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(1L, jsonArray.parseLong(0, 1L));
+    }
+
+    @Test
+    public void jsonArray_06_parseString() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(null, jsonArray.parseString(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(null, jsonArray.parseString(0));
+    }
+
+    @Test
+    public void jsonArray_06_parseString_withDefault() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals("test", jsonArray.parseString(0, "test"));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals("test", jsonArray.parseString(0, "test"));
+    }
+
+    @Test
+    public void jsonArray_07_parseJsonArray() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(null, jsonArray.parseJsonArray(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(null, jsonArray.parseJsonArray(0));
+    }
+
+    @Test
+    public void jsonArray_08_parseJsonObject() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(null, jsonArray.parseJsonObject(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertEquals(null, jsonArray.parseJsonObject(0));
+    }
+
+    @Test
+    public void jsonArray_09_append() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertNotNull(jsonArray.append(true));
+        Assert.assertNotNull(jsonArray.append(0.1D));
+        Assert.assertNotNull(jsonArray.append(0.1f));
+        Assert.assertNotNull(jsonArray.append(1));
+        Assert.assertNotNull(jsonArray.append(2L));
+        Assert.assertNotNull(jsonArray.append("test"));
+        JsonArray jsonArray2 = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray.append(jsonArray2));
+        JsonObject jsonObject2 = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonArray.append(jsonObject2));
+        Assert.assertEquals(true, jsonArray.parseBoolean(0));
+        Assert.assertEquals(0.1D, jsonArray.parseDouble(1), 0.00001D);
+        Assert.assertEquals(0.1f, jsonArray.parseFloat(2), 0.00001f);
+        Assert.assertEquals(1, jsonArray.parseInt(3));
+        Assert.assertEquals(2L, jsonArray.parseLong(4));
+        Assert.assertEquals("test", jsonArray.parseString(5));
+        Assert.assertNotNull(jsonArray.parseJsonArray(6));
+        Assert.assertNotNull(jsonArray.parseJsonObject(7));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertNotNull(jsonArray.append(true));
+        Assert.assertNotNull(jsonArray.append(0.1D));
+        Assert.assertNotNull(jsonArray.append(0.1f));
+        Assert.assertNotNull(jsonArray.append(1));
+        Assert.assertNotNull(jsonArray.append(2L));
+        Assert.assertNotNull(jsonArray.append("test"));
+        jsonArray2 = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray.append(jsonArray2));
+        jsonObject2 = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonArray.append(jsonObject2));
+        Assert.assertEquals(true, jsonArray.parseBoolean(0));
+        Assert.assertEquals(0.1D, jsonArray.parseDouble(1), 0.00001D);
+        Assert.assertEquals(0.1f, jsonArray.parseFloat(2), 0.00001f);
+        Assert.assertEquals(1, jsonArray.parseInt(3));
+        Assert.assertEquals(2L, jsonArray.parseLong(4));
+        Assert.assertEquals("test", jsonArray.parseString(5));
+        Assert.assertNotNull(jsonArray.parseJsonArray(6));
+        Assert.assertNotNull(jsonArray.parseJsonObject(7));
+    }
+
+    @Test
+    public void jsonArray_10_insert() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonArray jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertNotNull(jsonArray.insert(0,true));
+        Assert.assertNotNull(jsonArray.insert(0,0.1D));
+        Assert.assertNotNull(jsonArray.insert(0,0.1f));
+        Assert.assertNotNull(jsonArray.insert(0,1));
+        Assert.assertNotNull(jsonArray.insert(0,2L));
+        Assert.assertNotNull(jsonArray.insert(0,"test"));
+        JsonArray jsonArray2 = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray.insert(0, jsonArray2));
+        JsonObject jsonObject2 = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonArray.insert(0, jsonObject2));
+        Assert.assertEquals(true, jsonArray.parseBoolean(7));
+        Assert.assertEquals(0.1D, jsonArray.parseDouble(6), 0.00001D);
+        Assert.assertEquals(0.1f, jsonArray.parseFloat(5), 0.00001f);
+        Assert.assertEquals(1, jsonArray.parseInt(4));
+        Assert.assertEquals(2L, jsonArray.parseLong(3));
+        Assert.assertEquals("test", jsonArray.parseString(2));
+        Assert.assertNotNull(jsonArray.parseJsonArray(1));
+        Assert.assertNotNull(jsonArray.parseJsonObject(0));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonArray = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray);
+        Assert.assertNotNull(jsonArray.insert(0,true));
+        Assert.assertNotNull(jsonArray.insert(0,0.1D));
+        Assert.assertNotNull(jsonArray.insert(0,0.1f));
+        Assert.assertNotNull(jsonArray.insert(0,1));
+        Assert.assertNotNull(jsonArray.insert(0,2L));
+        Assert.assertNotNull(jsonArray.insert(0,"test"));
+        jsonArray2 = jsonFactory.createJsonArray();
+        Assert.assertNotNull(jsonArray.insert(0, jsonArray2));
+        jsonObject2 = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonArray.insert(0, jsonObject2));
+        Assert.assertEquals(true, jsonArray.parseBoolean(7));
+        Assert.assertEquals(0.1D, jsonArray.parseDouble(6), 0.00001D);
+        Assert.assertEquals(0.1f, jsonArray.parseFloat(5), 0.00001f);
+        Assert.assertEquals(1, jsonArray.parseInt(4));
+        Assert.assertEquals(2L, jsonArray.parseLong(3));
+        Assert.assertEquals("test", jsonArray.parseString(2));
+        Assert.assertNotNull(jsonArray.parseJsonArray(1));
+        Assert.assertNotNull(jsonArray.parseJsonObject(0));
+    }
+
+    @Test
+    public void jsonObject_00_hasKey() {
+        JsonFactory.register(JavaJsonFactory.class);
+        JsonFactory jsonFactory = JsonFactory.getInstance();
+        Assert.assertNotNull(jsonFactory);
+        JsonObject jsonObject = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonObject);
+        Assert.assertFalse(jsonObject.hasKey("test"));
+
+        jsonFactory = JsonFactory.getInstance(JavaJsonFactory.class);
+        Assert.assertNotNull(jsonFactory);
+        jsonObject = jsonFactory.createJsonObject();
+        Assert.assertNotNull(jsonObject);
+        Assert.assertFalse(jsonObject.hasKey("test"));
+    }
+
+    // TODO
+}
