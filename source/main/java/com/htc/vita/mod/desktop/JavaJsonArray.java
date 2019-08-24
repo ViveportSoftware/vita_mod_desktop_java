@@ -238,7 +238,7 @@ public class JavaJsonArray extends JsonArray {
     }
 
     @Override
-    protected boolean OnParseBoolean(int index, boolean defaultValue) {
+    protected boolean onParseBoolean(int index, boolean defaultValue) {
         boolean result = defaultValue;
         if (mJSONArray == null || mJSONArray.length() <= index) {
             return result;
@@ -308,7 +308,7 @@ public class JavaJsonArray extends JsonArray {
     }
 
     @Override
-    protected String OnParseString(int index, String defaultValue) {
+    protected String onParseString(int index, String defaultValue) {
         String result = defaultValue;
         if (mJSONArray == null || mJSONArray.length() <= index) {
             return result;
