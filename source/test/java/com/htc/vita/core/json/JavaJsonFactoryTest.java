@@ -1,6 +1,6 @@
 package com.htc.vita.core.json;
 
-import com.htc.vita.mod.desktop.JavaJsonFactory;
+import com.htc.vita.mod.desktop.json.JavaJsonFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
