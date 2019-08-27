@@ -1,4 +1,4 @@
-package com.htc.vita.mod.desktop;
+package com.htc.vita.mod.desktop.json;
 
 import com.htc.vita.core.json.JsonArray;
 import com.htc.vita.core.json.JsonFactory;

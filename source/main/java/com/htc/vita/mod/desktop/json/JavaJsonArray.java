@@ -1,9 +1,10 @@
-package com.htc.vita.mod.desktop;
+package com.htc.vita.mod.desktop.json;
 
 import com.htc.vita.core.json.JsonArray;
 import com.htc.vita.core.json.JsonObject;
 import com.htc.vita.core.log.Logger;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JavaJsonArray extends JsonArray {
@@ -245,7 +246,7 @@ public class JavaJsonArray extends JsonArray {
         }
         try {
             result = mJSONArray.getBoolean(index);
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse boolean value by index: " + index);
         }
         return result;
@@ -259,7 +260,7 @@ public class JavaJsonArray extends JsonArray {
         }
         try {
             result = mJSONArray.getDouble(index);
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse double value by index: " + index);
         }
         return result;
@@ -273,7 +274,7 @@ public class JavaJsonArray extends JsonArray {
         }
         try {
             result = mJSONArray.getFloat(index);
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse float value by index: " + index);
         }
         return result;
@@ -287,7 +288,7 @@ public class JavaJsonArray extends JsonArray {
         }
         try {
             result = mJSONArray.getInt(index);
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse int value by index: " + index);
         }
         return result;
@@ -301,7 +302,7 @@ public class JavaJsonArray extends JsonArray {
         }
         try {
             result = mJSONArray.getLong(index);
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse long value by index: " + index);
         }
         return result;
@@ -315,7 +316,7 @@ public class JavaJsonArray extends JsonArray {
         }
         try {
             result = mJSONArray.getString(index);
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse String value by index: " + index);
         }
         return result;
@@ -331,7 +332,7 @@ public class JavaJsonArray extends JsonArray {
             if (jsonArray != null) {
                 return new JavaJsonArray(jsonArray);
             }
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse JavaArray value by index: " + index);
         }
         return null;
@@ -347,7 +348,7 @@ public class JavaJsonArray extends JsonArray {
             if (jsonObject != null) {
                 return new JavaJsonObject(jsonObject);
             }
-        } catch (Exception e) {
+        } catch (JSONException e) {
             Logger.getInstance(JavaJsonArray.class.getSimpleName()).error("Can not parse JavaObject value by index: " + index);
         }
         return null;
