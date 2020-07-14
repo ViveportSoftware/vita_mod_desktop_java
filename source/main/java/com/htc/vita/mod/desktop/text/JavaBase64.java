@@ -9,12 +9,6 @@ public class JavaBase64 extends Base64 {
     protected byte[] onDecode(
             String data,
             Base64Option base64Option) throws Exception {
-        if (Java8Base64.isReady()) {
-            return Java8Base64.decode(
-                    data,
-                    base64Option
-            );
-        }
         if (JavaInternalBase64.isReady()) {
             return JavaInternalBase64.decode(data);
         }
@@ -26,12 +20,6 @@ public class JavaBase64 extends Base64 {
     protected String onEncodeToString(
             byte[] data,
             Base64Option base64Option) throws Exception {
-        if (Java8Base64.isReady()) {
-            return Java8Base64.encodeToString(
-                    data,
-                    base64Option
-            );
-        }
         if (JavaInternalBase64.isReady()) {
             return JavaInternalBase64.encodeToString(
                     data,

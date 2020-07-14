@@ -69,6 +69,8 @@ public class JavaBase64Test {
                                                + "AJ7fsgBZqqoAAwAAAAAAAAAAAAAAAAAAAAAAAAAAwAMAAIABAAAA+AAAA/wAAAf+"
                                                + "AAAP/AAAD/wAAA/8AACPCQAAjkkAAI4BAADHAwAA48cAAOGHAADwDwAA+B8AAA==";
 
+    private static boolean PREFER_JAVA_8_IMPL = false;
+
     @Test
     public void java_0_getInstance() {
         Base64.register(JavaBase64.class);
@@ -84,6 +86,7 @@ public class JavaBase64Test {
     @Test
     public void java_1_encodeToString() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -99,6 +102,7 @@ public class JavaBase64Test {
     @Test
     public void java_1_encodeToString_withBasicOption() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -117,6 +121,7 @@ public class JavaBase64Test {
     @Test
     public void java_1_encodeToString_withMimeOption() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -143,6 +148,7 @@ public class JavaBase64Test {
     @Test
     public void java_1_encodeToString_withUrlSafeOption() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -175,6 +181,7 @@ public class JavaBase64Test {
     @Test
     public void java_2_decode() throws UnsupportedEncodingException {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -187,6 +194,7 @@ public class JavaBase64Test {
     @Test
     public void java_2_decode_withBasicOption() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -209,6 +217,7 @@ public class JavaBase64Test {
     @Test
     public void java_2_decode_withMimeOption() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
@@ -231,6 +240,7 @@ public class JavaBase64Test {
     @Test
     public void java_2_decode_withUrlSafeOption() {
         Base64.register(JavaBase64.class);
+        Base64.preferJava8Impl(PREFER_JAVA_8_IMPL);
         Base64 base64 = Base64.getInstance();
         Assert.assertNotNull(base64);
 
