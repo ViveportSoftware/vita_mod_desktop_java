@@ -51,8 +51,7 @@ import java.io.IOException;
     /* package */ static String encodeToString(
             byte[] data,
             Base64Option base64Option) {
-        BASE64Encoder base64Encoder = new BASE64Encoder();
-        String mimeEncoded = base64Encoder.encode(data);
+        String mimeEncoded = new BASE64Encoder().encode(data);
         if (base64Option == Base64Option.Mime) {
             return mimeEncoded;
         }
