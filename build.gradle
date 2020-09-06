@@ -79,6 +79,10 @@ publish {
     dependsOn assemble
 }
 
+test {
+    jvmArgs += '-Djna.nosys=true'
+}
+
 // from plugin 'maven-publish'
 publishing {
     publications {
