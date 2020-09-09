@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 public class JavaJsonObject extends JsonObject {
@@ -37,7 +38,9 @@ public class JavaJsonObject extends JsonObject {
     }
 
     @Override
-    protected boolean onParseBoolean(String key, boolean defaultValue) {
+    protected boolean onParseBoolean(
+            String key,
+            boolean defaultValue) {
         boolean result = defaultValue;
         if (mJSONObject == null) {
             return result;
@@ -45,13 +48,19 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getBoolean(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse boolean value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse boolean value by key: %s",
+                    key
+            ));
         }
         return result;
     }
 
     @Override
-    protected double onParseDouble(String key, double defaultValue) {
+    protected double onParseDouble(
+            String key,
+            double defaultValue) {
         double result = defaultValue;
         if (mJSONObject == null) {
             return result;
@@ -59,13 +68,19 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getDouble(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse double value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse double value by key: %s",
+                    key
+            ));
         }
         return result;
     }
 
     @Override
-    protected float onParseFloat(String key, float defaultValue) {
+    protected float onParseFloat(
+            String key,
+            float defaultValue) {
         float result = defaultValue;
         if (mJSONObject == null) {
             return result;
@@ -73,13 +88,19 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getFloat(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse float value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse float value by key: %s",
+                    key
+            ));
         }
         return result;
     }
 
     @Override
-    protected int onParseInt(String key, int defaultValue) {
+    protected int onParseInt(
+            String key,
+            int defaultValue) {
         int result = defaultValue;
         if (mJSONObject == null) {
             return result;
@@ -87,13 +108,19 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getInt(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse int value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse int value by key: %s",
+                    key
+            ));
         }
         return result;
     }
 
     @Override
-    protected long onParseLong(String key, long defaultValue) {
+    protected long onParseLong(
+            String key,
+            long defaultValue) {
         long result = defaultValue;
         if (mJSONObject == null) {
             return result;
@@ -101,13 +128,19 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getLong(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse long value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse long value by key: %s",
+                    key
+            ));
         }
         return result;
     }
 
     @Override
-    protected String onParseString(String key, String defaultValue) {
+    protected String onParseString(
+            String key,
+            String defaultValue) {
         String result = defaultValue;
         if (mJSONObject == null) {
             return result;
@@ -115,7 +148,11 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getString(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse String value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse String value by key: %s",
+                    key
+            ));
         }
         return result;
     }
@@ -131,7 +168,11 @@ public class JavaJsonObject extends JsonObject {
                 return new JavaJsonArray(jsonArray);
             }
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse JsonArray value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse JsonArray value by key: %s",
+                    key
+            ));
         }
         return null;
     }
@@ -147,80 +188,124 @@ public class JavaJsonObject extends JsonObject {
                 return new JavaJsonObject(jsonObject);
             }
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error("Can not parse JsonObject value by key: " + key);
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
+                    Locale.ROOT,
+                    "Can not parse JsonObject value by key: %s",
+                    key
+            ));
         }
         return null;
     }
 
     @Override
-    protected JsonObject onPutBoolean(String key, boolean value) {
+    protected JsonObject onPutBoolean(
+            String key,
+            boolean value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, value);
+        mJSONObject.put(
+                key,
+                value
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutDouble(String key, double value) {
+    protected JsonObject onPutDouble(
+            String key,
+            double value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, value);
+        mJSONObject.put(
+                key,
+                value
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutFloat(String key, float value) {
+    protected JsonObject onPutFloat(
+            String key,
+            float value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, value);
+        mJSONObject.put(
+                key,
+                value
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutInt(String key, int value) {
+    protected JsonObject onPutInt(
+            String key,
+            int value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, value);
+        mJSONObject.put(
+                key,
+                value
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutLong(String key, long value) {
+    protected JsonObject onPutLong(
+            String key,
+            long value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, value);
+        mJSONObject.put(
+                key,
+                value
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutString(String key, String value) {
+    protected JsonObject onPutString(
+            String key,
+            String value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, value);
+        mJSONObject.put(
+                key,
+                value
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutJsonArray(String key, JsonArray value) {
+    protected JsonObject onPutJsonArray(
+            String key,
+            JsonArray value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, ((JavaJsonArray)value).getInnerInstance());
+        mJSONObject.put(
+                key,
+                ((JavaJsonArray)value).getInnerInstance()
+        );
         return this;
     }
 
     @Override
-    protected JsonObject onPutJsonObject(String key, JsonObject value) {
+    protected JsonObject onPutJsonObject(
+            String key,
+            JsonObject value) {
         if (mJSONObject == null) {
             return this;
         }
-        mJSONObject.put(key, ((JavaJsonObject)value).getInnerInstance());
+        mJSONObject.put(
+                key,
+                ((JavaJsonObject)value).getInnerInstance()
+        );
         return this;
     }
 

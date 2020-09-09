@@ -19,7 +19,9 @@ public class JavaJsonFactory extends JsonFactory {
     }
 
     @Override
-    protected <T> T onDeserializeObject(String content, Class<T> type) {
+    protected <T> T onDeserializeObject(
+            String content,
+            Class<T> type) {
         Logger.getInstance(JavaJsonFactory.class.getSimpleName()).error(
                 "This implementation of JsonFactory does not support object deserialization!!"
         );

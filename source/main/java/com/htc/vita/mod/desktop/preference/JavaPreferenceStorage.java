@@ -33,7 +33,9 @@ public class JavaPreferenceStorage {
         );
     }
 
-    private static String getFilePath(String category, String label) {
+    private static String getFilePath(
+            String category,
+            String label) {
         String path = PathUtils.getAppDataPath();
         if (StringUtils.isNullOrWhiteSpace(path))
         {
