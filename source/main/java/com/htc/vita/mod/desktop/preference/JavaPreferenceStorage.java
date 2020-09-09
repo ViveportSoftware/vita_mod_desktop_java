@@ -9,6 +9,7 @@ import com.htc.vita.mod.desktop.io.PathUtils;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class JavaPreferenceStorage {
@@ -85,6 +86,7 @@ public class JavaPreferenceStorage {
                 success = parent.mkdirs();
                 if (!success) {
                     Logger.getInstance().error(String.format(
+                            Locale.ROOT,
                             "Can not create parent folder for path: \"%s\"",
                             mPath
                     ));
@@ -102,6 +104,7 @@ public class JavaPreferenceStorage {
         );
         if (!success) {
             Logger.getInstance().error(String.format(
+                    Locale.ROOT,
                     "Can not write text to file: \"%s\"",
                     mPath
             ));
