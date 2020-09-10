@@ -2,28 +2,23 @@ package com.htc.vita.core.preference;
 
 import com.htc.vita.core.json.JsonFactory;
 import com.htc.vita.mod.desktop.json.JavaJsonFactory;
-import com.htc.vita.mod.desktop.preference.JavaPreferenceFactory;
+import com.htc.vita.mod.desktop.preference.JavaPreferenceStorage;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class JavaPreferenceFactoryTest {
+public class JavaPreferenceStorageTest {
     @Test
     public void java_0_getInstance() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
-        Assert.assertTrue(preferenceFactory instanceof JavaPreferenceFactory);
-
-        preferenceFactory = PreferenceFactory.getInstance(JavaPreferenceFactory.class);
-        Assert.assertNotNull(preferenceFactory);
-        Assert.assertTrue(preferenceFactory instanceof JavaPreferenceFactory);
     }
 
     @Test
     public void java_1_loadPreferences() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences0 = preferenceFactory.loadPreferences();
@@ -36,7 +31,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_00_put_withBoolean() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -47,7 +42,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_01_put_withDouble() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -58,7 +53,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_02_put_withFloat() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -69,7 +64,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_03_put_withInt() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -80,7 +75,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_04_put_withLong() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -91,7 +86,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_05_put_withString() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -102,7 +97,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_06_parseBoolean() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -116,7 +111,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_06_parseBoolean_withDefault() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -130,7 +125,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_07_parseDouble() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -144,7 +139,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_07_parseDouble_withDefault() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -158,7 +153,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_08_parseFloat() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -172,7 +167,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_08_parseFloat_withDefault() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -186,7 +181,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_09_parseInt() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -200,7 +195,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_09_parseInt_withDefault() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -214,7 +209,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_10_parseLong() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -228,7 +223,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_10_parseLong_withDefault() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -242,7 +237,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_11_parseString() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -256,7 +251,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_11_parseString_withDefault() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences = preferenceFactory.loadPreferences();
@@ -270,7 +265,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_12_commit() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences0 = preferenceFactory.loadPreferences();
@@ -292,7 +287,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_12_commit_withUnicode() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences0 = preferenceFactory.loadPreferences();
@@ -304,7 +299,7 @@ public class JavaPreferenceFactoryTest {
     @Test
     public void preferences_13_clear() {
         JsonFactory.register(JavaJsonFactory.class);
-        PreferenceFactory.register(JavaPreferenceFactory.class);
+        PreferenceStorage.register(JavaPreferenceStorage.class);
         PreferenceFactory preferenceFactory = PreferenceFactory.getInstance();
         Assert.assertNotNull(preferenceFactory);
         Preferences preferences0 = preferenceFactory.loadPreferences();

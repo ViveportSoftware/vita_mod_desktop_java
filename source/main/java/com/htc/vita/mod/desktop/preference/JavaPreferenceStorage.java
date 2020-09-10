@@ -3,6 +3,7 @@ package com.htc.vita.mod.desktop.preference;
 import com.htc.vita.core.json.JsonFactory;
 import com.htc.vita.core.json.JsonObject;
 import com.htc.vita.core.log.Logger;
+import com.htc.vita.core.preference.PreferenceStorage;
 import com.htc.vita.core.util.StringUtils;
 import com.htc.vita.mod.desktop.io.FileUtils;
 import com.htc.vita.mod.desktop.io.PathUtils;
@@ -12,26 +13,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class JavaPreferenceStorage {
-    private final String mPath;
-
-    public JavaPreferenceStorage(
-            String category,
-            String label) {
-        String targetCategory = "Vita";
-        String targetLabel = "default";
-        if (!StringUtils.isNullOrWhiteSpace(category)) {
-            targetCategory = category;
-        }
-        if (!StringUtils.isNullOrWhiteSpace(label)) {
-            targetLabel = label;
-        }
-
-        mPath = getFilePath(
-                targetCategory,
-                targetLabel
-        );
-    }
+public class JavaPreferenceStorage extends PreferenceStorage {
+    private String mPath;
 
     private static String getFilePath(
             String category,
@@ -48,8 +31,15 @@ public class JavaPreferenceStorage {
         );
     }
 
-    public Map<String, String> loadFromFile() {
+    @Override
+    protected Map<String, String> onLoad() {
         Map<String, String> result = new HashMap<String, String>();
+        if (StringUtils.isNullOrWhiteSpace(mPath)) {
+            mPath = getFilePath(
+                    getCategory(),
+                    getLabel()
+            );
+        }
         if (StringUtils.isNullOrWhiteSpace(mPath)) {
             return result;
         }
@@ -67,11 +57,18 @@ public class JavaPreferenceStorage {
         return jsonObject.toStringMap();
     }
 
-    public boolean saveToFile(Map<String, String> preferences) {
-        if (preferences == null) {
+    @Override
+    protected boolean onSave(Map<String, String> data) {
+        if (data == null) {
             return false;
         }
 
+        if (StringUtils.isNullOrWhiteSpace(mPath)) {
+            mPath = getFilePath(
+                    getCategory(),
+                    getLabel()
+            );
+        }
         if (StringUtils.isNullOrWhiteSpace(mPath)) {
             return false;
         }
@@ -101,7 +98,7 @@ public class JavaPreferenceStorage {
                 file,
                 JsonFactory.getInstance()
                         .createJsonObject()
-                        .putAllString(preferences)
+                        .putAllString(data)
                         .toPrettyString()
         );
         if (!success) {
