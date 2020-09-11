@@ -26,6 +26,6 @@ public class NativePlatformTest {
 
         String machineId = platform.getMachineId();
         Assert.assertFalse(StringUtils.isNullOrWhiteSpace(machineId));
-        Assert.assertFalse(NativePlatform.UNKNOWN_MACHINE_ID.equals(machineId));
+        Assert.assertNotEquals(NativePlatform.UNKNOWN_MACHINE_ID, machineId);
     }
 }

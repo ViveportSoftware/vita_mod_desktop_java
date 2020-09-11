@@ -10,7 +10,7 @@ public class NativePlatform extends Platform {
     public static final String UNKNOWN_MACHINE_ID = "UNKNOWN-DESKTOP-MACHINE-ID";
 
     @Override
-    protected String onGetMachineId() throws Exception {
+    protected String onGetMachineId() {
         String machineId = onOverrideGetMachineId();
         if (!StringUtils.isNullOrWhiteSpace(machineId)) {
             return machineId;
