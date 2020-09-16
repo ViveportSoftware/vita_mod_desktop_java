@@ -3,11 +3,11 @@ package com.htc.vita.mod.desktop.json;
 import com.htc.vita.core.json.JsonArray;
 import com.htc.vita.core.json.JsonObject;
 import com.htc.vita.core.log.Logger;
+import com.htc.vita.core.util.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 public class JavaJsonObject extends JsonObject {
@@ -48,8 +48,7 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getBoolean(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse boolean value by key: %s",
                     key
             ));
@@ -68,8 +67,7 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getDouble(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse double value by key: %s",
                     key
             ));
@@ -88,8 +86,7 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getFloat(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse float value by key: %s",
                     key
             ));
@@ -108,8 +105,7 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getInt(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse int value by key: %s",
                     key
             ));
@@ -128,8 +124,7 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getLong(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse long value by key: %s",
                     key
             ));
@@ -148,8 +143,7 @@ public class JavaJsonObject extends JsonObject {
         try {
             result = mJSONObject.getString(key);
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse String value by key: %s",
                     key
             ));
@@ -168,8 +162,7 @@ public class JavaJsonObject extends JsonObject {
                 return new JavaJsonArray(jsonArray);
             }
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse JsonArray value by key: %s",
                     key
             ));
@@ -188,8 +181,7 @@ public class JavaJsonObject extends JsonObject {
                 return new JavaJsonObject(jsonObject);
             }
         } catch (Exception e) {
-            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonObject.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse JsonObject value by key: %s",
                     key
             ));

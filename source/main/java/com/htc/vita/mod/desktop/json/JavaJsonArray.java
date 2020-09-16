@@ -3,11 +3,10 @@ package com.htc.vita.mod.desktop.json;
 import com.htc.vita.core.json.JsonArray;
 import com.htc.vita.core.json.JsonObject;
 import com.htc.vita.core.log.Logger;
+import com.htc.vita.core.util.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Locale;
 
 public class JavaJsonArray extends JsonArray {
     private final JSONArray mJSONArray;
@@ -315,8 +314,7 @@ public class JavaJsonArray extends JsonArray {
         try {
             result = mJSONArray.getBoolean(index);
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse boolean value by index: %d",
                     index
             ));
@@ -335,8 +333,7 @@ public class JavaJsonArray extends JsonArray {
         try {
             result = mJSONArray.getDouble(index);
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse double value by index: %d",
                     index
             ));
@@ -355,8 +352,7 @@ public class JavaJsonArray extends JsonArray {
         try {
             result = mJSONArray.getFloat(index);
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse float value by index: %d",
                     index
             ));
@@ -375,8 +371,7 @@ public class JavaJsonArray extends JsonArray {
         try {
             result = mJSONArray.getInt(index);
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse int value by index: %d",
                     index
             ));
@@ -395,8 +390,7 @@ public class JavaJsonArray extends JsonArray {
         try {
             result = mJSONArray.getLong(index);
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse long value by index: %d",
                     index
             ));
@@ -415,8 +409,7 @@ public class JavaJsonArray extends JsonArray {
         try {
             result = mJSONArray.getString(index);
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse String value by index: %d",
                     index
             ));
@@ -435,8 +428,7 @@ public class JavaJsonArray extends JsonArray {
                 return new JavaJsonArray(jsonArray);
             }
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse JavaArray value by index: %d",
                     index
             ));
@@ -455,8 +447,7 @@ public class JavaJsonArray extends JsonArray {
                 return new JavaJsonObject(jsonObject);
             }
         } catch (JSONException e) {
-            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(String.format(
-                    Locale.ROOT,
+            Logger.getInstance(JavaJsonArray.class.getSimpleName()).error(StringUtils.rootLocaleFormat(
                     "Can not parse JavaObject value by index: %d",
                     index
             ));
