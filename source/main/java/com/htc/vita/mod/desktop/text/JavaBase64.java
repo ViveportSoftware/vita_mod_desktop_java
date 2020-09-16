@@ -19,7 +19,7 @@ public class JavaBase64 extends Base64 {
     @Override
     protected String onEncodeToString(
             byte[] data,
-            Base64Option base64Option) throws Exception {
+            Base64Option base64Option) {
         if (JavaInternalBase64.isReady()) {
             return JavaInternalBase64.encodeToString(
                     data,
