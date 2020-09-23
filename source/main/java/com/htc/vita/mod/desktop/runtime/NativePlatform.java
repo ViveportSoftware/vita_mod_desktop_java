@@ -20,7 +20,7 @@ public class NativePlatform extends Platform {
     }
 
     protected String onOverrideGetMachineId() {
-        String osName = System.getProperty("os.name").toLowerCase();
+        String osName = StringUtils.toRootLocaleLowerCase(System.getProperty("os.name"));
         if (osName.contains("win")) {
             return Advapi32Util.registryGetStringValue(
                     WinReg.HKEY_LOCAL_MACHINE,
