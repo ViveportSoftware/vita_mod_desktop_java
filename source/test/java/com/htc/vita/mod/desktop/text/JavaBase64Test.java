@@ -1,7 +1,8 @@
-package com.htc.vita.core.text;
+package com.htc.vita.mod.desktop.text;
 
+import com.htc.vita.core.text.Base64;
+import com.htc.vita.core.text.Base64Option;
 import com.htc.vita.core.util.Convert;
-import com.htc.vita.mod.desktop.text.JavaBase64;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -69,7 +70,7 @@ public class JavaBase64Test {
                                                + "AJ7fsgBZqqoAAwAAAAAAAAAAAAAAAAAAAAAAAAAAwAMAAIABAAAA+AAAA/wAAAf+"
                                                + "AAAP/AAAD/wAAA/8AACPCQAAjkkAAI4BAADHAwAA48cAAOGHAADwDwAA+B8AAA==";
 
-    private static boolean PREFER_JAVA_8_IMPL = false;
+    private static final boolean PREFER_JAVA_8_IMPL = false;
 
     @Test
     public void java_0_getInstance() {

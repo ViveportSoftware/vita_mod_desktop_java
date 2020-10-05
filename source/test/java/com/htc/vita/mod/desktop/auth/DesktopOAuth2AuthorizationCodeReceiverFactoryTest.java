@@ -1,9 +1,10 @@
-package com.htc.vita.core.auth;
+package com.htc.vita.mod.desktop.auth;
 
+import com.htc.vita.core.auth.OAuth2AuthorizationCodeReceiver;
+import com.htc.vita.core.auth.OAuth2AuthorizationCodeReceiverFactory;
 import com.htc.vita.core.concurrent.CancellationToken;
 import com.htc.vita.core.net.WebRequestFactory;
 import com.htc.vita.core.util.MapBuilder;
-import com.htc.vita.mod.desktop.auth.DesktopOAuth2AuthorizationCodeReceiverFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

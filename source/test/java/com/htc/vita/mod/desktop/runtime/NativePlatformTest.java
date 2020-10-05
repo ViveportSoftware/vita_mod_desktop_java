@@ -1,7 +1,7 @@
-package com.htc.vita.core.runtime;
+package com.htc.vita.mod.desktop.runtime;
 
+import com.htc.vita.core.runtime.Platform;
 import com.htc.vita.core.util.StringUtils;
-import com.htc.vita.mod.desktop.runtime.NativePlatform;
 import org.junit.Assert;
 import org.junit.Test;
 
