@@ -1,8 +1,10 @@
-package com.htc.vita.core.preference;
+package com.htc.vita.mod.desktop.preference;
 
 import com.htc.vita.core.json.JsonFactory;
+import com.htc.vita.core.preference.PreferenceFactory;
+import com.htc.vita.core.preference.PreferenceStorage;
+import com.htc.vita.core.preference.Preferences;
 import com.htc.vita.mod.desktop.json.JavaJsonFactory;
-import com.htc.vita.mod.desktop.preference.JavaPreferenceStorage;
 import org.junit.Assert;
 import org.junit.Test;
 
