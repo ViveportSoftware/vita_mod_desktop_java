@@ -19,22 +19,20 @@ import java.util.concurrent.Future;
 public class JavaPreferenceStorage extends PreferenceStorage {
     private final Object mLock = new Object();
 
-    private String mPath;
-
-    private Map<String, String> doLoad() {
+    private Map<String, String> doLoad(
+            String category,
+            String label) {
         synchronized (mLock) {
             Map<String, String> result = new HashMap<String, String>();
-            if (StringUtils.isNullOrWhiteSpace(mPath)) {
-                mPath = getFilePath(
-                        getCategory(),
-                        getLabel()
-                );
-            }
-            if (StringUtils.isNullOrWhiteSpace(mPath)) {
+            String path = getFilePath(
+                    category,
+                    label
+            );
+            if (StringUtils.isNullOrWhiteSpace(path)) {
                 return result;
             }
 
-            File file = new File(mPath);
+            File file = new File(path);
             if (!file.exists() || !file.isFile()) {
                 return result;
             }
@@ -48,24 +46,25 @@ public class JavaPreferenceStorage extends PreferenceStorage {
         }
     }
 
-    private boolean doSave(Map<String, String> data) {
+    private boolean doSave(
+            String category,
+            String label,
+            Map<String, String> data) {
         synchronized (mLock) {
             if (data == null) {
                 return false;
             }
 
-            if (StringUtils.isNullOrWhiteSpace(mPath)) {
-                mPath = getFilePath(
-                        getCategory(),
-                        getLabel()
-                );
-            }
-            if (StringUtils.isNullOrWhiteSpace(mPath)) {
+            String path = getFilePath(
+                    category,
+                    label
+            );
+            if (StringUtils.isNullOrWhiteSpace(path)) {
                 return false;
             }
 
             boolean success;
-            File file = new File(mPath);
+            File file = new File(path);
             if (!file.exists()) {
                 File parent = file.getParentFile();
                 if (parent == null) {
@@ -77,7 +76,7 @@ public class JavaPreferenceStorage extends PreferenceStorage {
                     if (!success) {
                         Logger.getInstance().error(StringUtils.rootLocaleFormat(
                                 "Can not create parent folder for path: \"%s\"",
-                                mPath
+                                path
                         ));
                         return false;
                     }
@@ -94,7 +93,7 @@ public class JavaPreferenceStorage extends PreferenceStorage {
             if (!success) {
                 Logger.getInstance().error(StringUtils.rootLocaleFormat(
                         "Can not write text to file: \"%s\"",
-                        mPath
+                        path
                 ));
             }
             return success;
@@ -117,31 +116,55 @@ public class JavaPreferenceStorage extends PreferenceStorage {
     }
 
     @Override
-    protected Map<String, String> onLoad() {
-        return doLoad();
+    protected Map<String, String> onLoad(
+            String category,
+            String label) {
+        return doLoad(
+                category,
+                label
+        );
     }
 
     @Override
-    protected Future<Map<String, String>> onLoadAsync() {
+    protected Future<Map<String, String>> onLoadAsync(
+            final String category,
+            final String label) {
         return TaskRunner.submit(new Callable<Map<String, String>>() {
                 @Override
                 public Map<String, String> call() {
-                    return doLoad();
+                    return doLoad(
+                            category,
+                            label
+                    );
                 }
         });
     }
 
     @Override
-    protected boolean onSave(Map<String, String> data) {
-        return doSave(data);
+    protected boolean onSave(
+            String category,
+            String label,
+            Map<String, String> data) {
+        return doSave(
+                category,
+                label,
+                data
+        );
     }
 
     @Override
-    protected Future<Boolean> onSaveAsync(final Map<String, String> data) {
+    protected Future<Boolean> onSaveAsync(
+            final String category,
+            final String label,
+            final Map<String, String> data) {
         return TaskRunner.submit(new Callable<Boolean>() {
                 @Override
                 public Boolean call() {
-                    return doSave(Collections.unmodifiableMap(data));
+                    return doSave(
+                            category,
+                            label,
+                            Collections.unmodifiableMap(data)
+                    );
                 }
         });
     }
