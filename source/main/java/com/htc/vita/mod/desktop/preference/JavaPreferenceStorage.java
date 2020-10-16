@@ -104,8 +104,7 @@ public class JavaPreferenceStorage extends PreferenceStorage {
             String category,
             String label) {
         String path = PathUtils.getAppDataPath();
-        if (StringUtils.isNullOrWhiteSpace(path))
-        {
+        if (StringUtils.isNullOrWhiteSpace(path)) {
             return "";
         }
         return PathUtils.combine(
