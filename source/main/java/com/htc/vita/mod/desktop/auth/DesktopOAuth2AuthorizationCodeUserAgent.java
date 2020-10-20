@@ -28,8 +28,13 @@ public class DesktopOAuth2AuthorizationCodeUserAgent extends OAuth2Authorization
         synchronized (mLock) {
             throwIfClosed();
 
-            mAuthorizationUri = parseAuthorizationUri(options);
             mCancellationToken = cancellationToken;
+            mAuthorizationUri = parseAuthorizationUri(options);
+            try {
+                onOverrideInitialize(options);
+            } catch (Exception e) {
+                Logger.getInstance(DesktopOAuth2AuthorizationCodeUserAgent.class.getSimpleName()).error(e.toString());
+            }
         }
         return this;
     }
@@ -57,20 +62,13 @@ public class DesktopOAuth2AuthorizationCodeUserAgent extends OAuth2Authorization
                         .setStatus(LaunchStatus.InvalidAuthorizationUri);
             }
 
-            String osName = StringUtils.toRootLocaleLowerCase(System.getProperty("os.name"));
-            if (osName.contains("win")) {
-                try {
-                    Runtime runtime = Runtime.getRuntime();
-                    runtime.exec(StringUtils.rootLocaleFormat(
-                            // "explorer \"%s\"",
-                            "rundll32 url.dll,FileProtocolHandler \"%s\"",
-                            mAuthorizationUri.toString()
-                    ));
+            try {
+                if (onOverrideLaunch()) {
                     return new LaunchResult()
                             .setStatus(LaunchStatus.Ok);
-                } catch (Exception e) {
-                    Logger.getInstance(DesktopOAuth2AuthorizationCodeUserAgent.class.getSimpleName()).error(e.toString());
                 }
+            } catch (Exception e) {
+                Logger.getInstance(DesktopOAuth2AuthorizationCodeUserAgent.class.getSimpleName()).error(e.toString());
             }
 
             return new LaunchResult()
@@ -78,7 +76,26 @@ public class DesktopOAuth2AuthorizationCodeUserAgent extends OAuth2Authorization
         }
     }
 
-    private static URI parseAuthorizationUri(Map<String, Object> options) {
+    protected boolean onOverrideInitialize(Map<String, Object> options) throws Exception {
+        return true;
+    }
+
+    protected boolean onOverrideLaunch() throws Exception {
+        String osName = StringUtils.toRootLocaleLowerCase(System.getProperty("os.name"));
+        if (osName.contains("win")) {
+            Runtime runtime = Runtime.getRuntime();
+            runtime.exec(StringUtils.rootLocaleFormat(
+                    // "explorer \"%s\"",
+                    "rundll32 url.dll,FileProtocolHandler \"%s\"",
+                    mAuthorizationUri.toString()
+            ));
+            return true;
+        }
+
+        return false;
+    }
+
+    protected static URI parseAuthorizationUri(Map<String, Object> options) {
         if (options == null || options.isEmpty()) {
             return null;
         }
