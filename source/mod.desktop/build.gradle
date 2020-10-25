@@ -142,7 +142,7 @@ task clearJar(type: Delete) {
 
 task copyJar(type: Copy) {
     from configurations.runtime.artifacts.files
-    into("${project.rootDir.getPath()}/dist/jar")
+    into "${project.rootDir.getPath()}/dist/jar"
 }
 
 task dist(type: Copy, dependsOn: [build, clearJar, copyJar])
