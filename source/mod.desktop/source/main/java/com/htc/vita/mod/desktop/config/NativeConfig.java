@@ -4,6 +4,7 @@ import com.htc.vita.core.config.Config;
 import com.htc.vita.core.log.Logger;
 import com.htc.vita.core.util.StringUtils;
 import com.sun.jna.platform.win32.Advapi32Util;
+import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.platform.win32.WinReg;
 
 import java.util.*;
@@ -18,7 +19,14 @@ public class NativeConfig extends Config {
         mConfigMap = appendByStringValue(
                 mConfigMap,
                 WinReg.HKEY_LOCAL_MACHINE,
-                KEY_PATH
+                KEY_PATH,
+                WinNT.KEY_WOW64_32KEY
+        );
+        mConfigMap = appendByStringValue(
+                mConfigMap,
+                WinReg.HKEY_LOCAL_MACHINE,
+                KEY_PATH,
+                WinNT.KEY_WOW64_64KEY
         );
     }
 
@@ -33,7 +41,8 @@ public class NativeConfig extends Config {
     private static Map<String, String> appendByStringValue(
             Map<String, String> properties,
             WinReg.HKEY hKey,
-            String keyPath) {
+            String keyPath,
+            int samDesiredExtra) {
         if (properties == null || StringUtils.isNullOrWhiteSpace(keyPath)) {
             return properties;
         }
@@ -44,10 +53,10 @@ public class NativeConfig extends Config {
         }
 
         try {
-            // TODO upgrade JNA to 5.x to apply samDesiredExtra
             boolean isKeyPathExists = Advapi32Util.registryKeyExists(
                     hKey,
-                    keyPath
+                    keyPath,
+                    samDesiredExtra
             );
             if (!isKeyPathExists) {
                 return properties;
@@ -55,9 +64,14 @@ public class NativeConfig extends Config {
 
             TreeMap<String, Object> valueMap = Advapi32Util.registryGetValues(
                     hKey,
-                    keyPath
+                    keyPath,
+                    samDesiredExtra
             );
             for (String valueName: valueMap.keySet()) {
+                if (valueName == null) {
+                    continue;
+                }
+
                 Object valueData = valueMap.get(valueName);
                 if (!(valueData instanceof String)) {
                     continue;
