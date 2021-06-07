@@ -8,7 +8,7 @@
 
 Compile-time dependencies:
 
-* [com.htc.vita:core](https://bintray.com/viveportsoftware/maven-public/vita_core_java)
+* [com.htc.vita:core](https://github.com/ViveportSoftware/vita_core_java)
 
 Package-time dependencies: none
 
